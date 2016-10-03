@@ -1,15 +1,19 @@
 package com.groupfive;
 
-import org.springframework.boot.*;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Import;
 
-@SpringBootApplication
+@SpringBootApplication (exclude = { HibernateJpaAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer {
+	
 	public static void main(String[] args){
 		SpringApplication.run(Application.class, args);
-	}//end main
+	}
 	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
